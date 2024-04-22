@@ -7,6 +7,7 @@ services:
     image: ghcr.io/eclipse-slm/slm/installer:${SLM_VERSION}
     environment:
       SLM_HOSTNAME: ${SLM_HOSTNAME}
+      SLM_AAS: ${SLM_AAS}
     volumes:
       - "//var/run/docker.sock:/var/run/docker.sock"
       - "./env.yml:/env/env.yml"

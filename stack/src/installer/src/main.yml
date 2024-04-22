@@ -11,6 +11,7 @@
       include_vars: "/env/env.yml"
     - set_fact:
         SLM_HOSTNAME: "{{ lookup('ansible.builtin.env', 'SLM_HOSTNAME') }}"
+        SLM_AAS: "{{ lookup('ansible.builtin.env', 'SLM_AAS') }}"
   tasks:
     - name: "Define global variables"
       block:
@@ -75,6 +76,7 @@
       vars:
         _consul_token: "{{ CONSUL_MASTER_TOKEN }}"
         _store_compose_file: /compose/aas.yml
+      when: SLM_AAS == "true"
 
     - name: "Start monitoring"
       ansible.builtin.include_role:
